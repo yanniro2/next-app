@@ -1,19 +1,17 @@
 import React from "react";
-import { AiTwotoneDelete } from "react-icons/ai";
+import RemoveButton from "./RemoveButton";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
-const Topic = () => {
+const Topic = ({ data }: any) => {
   return (
     <div className="w-full flex items-start justify-between p-3 rounded shadow">
       <div>
-        <h1 className="font-semibold">Title</h1>
-        <p>Details</p>
+        <h1 className="font-semibold">{data.title}</h1>
+        <p>{data.description}</p>
       </div>
       <div className="flex p-3 text-2xl gap-[1rem]">
-        <button>
-          <AiTwotoneDelete />
-        </button>
-        <Link href={"/crud/editTopic"}>
+        <RemoveButton id={data._id} />
+        <Link href={`/crud/editTopic/${data._id}`}>
           <FaEdit />
         </Link>
       </div>
